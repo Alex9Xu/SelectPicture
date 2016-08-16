@@ -6,4 +6,13 @@
     <string name="select_picture">Select Picture</string>
 
     <string name="selected_pics">Selected Pictures</string>
+
+    <string name="select">Select</string>
+    <string name="ok">OK</string>
+
+    <string name="all_image">All Image</string>
+    <string name="preview">Preview</string>
+
+    <string name="cant_find_picture">Can not find Picture</string>
+
 </resources>

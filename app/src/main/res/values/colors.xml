@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="gray">#9f9f9f</color>
+    <color name="gray_dark">#656565</color>
+
+    <color name="white">#ffffff</color>
+    <color name="bg_gray">#f8f8f8</color>
+
+    <color name="black_deep">#FF000000</color>
+
+    <color name="color_text_title">#303F9F</color>
+    <color name="public_text_color">#FF4081</color>
+    <color name="color_text_public_normal">#FF40CC</color>
+
 </resources>

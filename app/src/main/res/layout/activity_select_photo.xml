@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:id="@+id/lay_linear_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:onClick="back" >
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/icon_close_normal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:onClick="select"
+            android:drawableRight="@mipmap/icon_pull_down"
+            android:drawablePadding="5dp"
+            android:text="@string/all_image"
+            android:textColor="@color/color_text_title"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray" >
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom"
+            android:horizontalSpacing="3dp"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp" >
+        </GridView>
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_alignTop="@id/gridview"
+            android:background="@color/bg_gray"
+            android:visibility="gone" >
+        </ListView>
+
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white" >
+            <TextView
+                android:id="@+id/tv_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="7dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="@string/preview"
+                android:textColor="@color/color_text_public_normal"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="5dp"
+                android:paddingRight="20dp"
+                android:background="@null"
+                android:onClick="ok"
+                android:text="@string/ok"
+                android:textColor="@color/public_text_color"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvw_selected_pics"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toLeftOf="@id/btn_ok"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/icon_round_red"
+                android:gravity="center"
+                android:textColor="@color/black_deep"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

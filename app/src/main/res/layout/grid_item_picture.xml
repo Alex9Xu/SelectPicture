@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="120dp" >
+
+    <ImageView
+        android:id="@+id/slelct_picture_img_view"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ease_chat_image_normal" />
+
+    <Button
+        android:id="@+id/slelct_picture_check_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:background="@layout/round_selector" />
+
+</RelativeLayout>
