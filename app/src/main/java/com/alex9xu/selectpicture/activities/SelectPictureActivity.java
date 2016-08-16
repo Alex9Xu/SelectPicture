@@ -71,6 +71,7 @@ public class SelectPictureActivity extends AppCompatActivity {
     private String cameraPath = null;
     public Handler mHandler = new Handler();
 
+    private boolean mIsDisplayMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class SelectPictureActivity extends AppCompatActivity {
     protected void initViews() {
         MAX_NUM = getIntent().getIntExtra(INTENT_MAX_NUM, 9);
         mSelected = getIntent().getStringExtra("selected");
+        mIsDisplayMode = getIntent().getBooleanExtra("mode_display", false);
         if (null != mSelected) {
             String[] s = mSelected.split(",");
             for (int i = 0; i < s.length; i++) {
@@ -159,6 +161,9 @@ public class SelectPictureActivity extends AppCompatActivity {
     private void initViewItems() {
         initFolder();
         mTvwSelectedPics = (TextView) findViewById(R.id.tvw_selected_pics);
+        if(mIsDisplayMode) {
+            mTvwSelectedPics.setVisibility(View.GONE);
+        }
         btn_select = (Button) findViewById(R.id.btn_select);
         mTvPreview = (TextView) findViewById(R.id.tv_preview);
         mTvwSelectedPics.setText("0");
@@ -325,7 +330,7 @@ public class SelectPictureActivity extends AppCompatActivity {
         }
         Intent previewPicIntent = new Intent(this, PreviewPictureActivity.class);
         previewPicIntent.putStringArrayListExtra(PreviewPictureActivity.PIC_STR_LIST, allPicStrList);
-        previewPicIntent.putExtra(PreviewPictureActivity.IS_SELECT_MODE, true);
+        previewPicIntent.putExtra(PreviewPictureActivity.IS_DISPLAY_MODE, mIsDisplayMode);
         previewPicIntent.putStringArrayListExtra(PreviewPictureActivity.PIC_SELECTED_STR_LIST, selectedPicStrList);
         startActivityForResult(previewPicIntent, REQUEST_SELECT_PIC);
     }
@@ -354,6 +359,9 @@ public class SelectPictureActivity extends AppCompatActivity {
                 convertView = View.inflate(mActivity, R.layout.grid_item_picture, null);
                 holder.iv = (ImageView) convertView.findViewById(R.id.slelct_picture_img_view);
                 holder.checkBox = (Button) convertView.findViewById(R.id.slelct_picture_check_button);
+                if(mIsDisplayMode) {
+                    holder.checkBox.setVisibility(View.GONE);
+                }
                 convertView.setTag(holder);
                 viewMap.put(position, convertView);
             } else {
@@ -430,6 +438,10 @@ public class SelectPictureActivity extends AppCompatActivity {
                         finalHolder.checkBox.performClick();
                     }
                 });
+
+                if(mIsDisplayMode) {
+                    holder.checkBox.setVisibility(View.GONE);
+                }
             }
 
             return convertView;

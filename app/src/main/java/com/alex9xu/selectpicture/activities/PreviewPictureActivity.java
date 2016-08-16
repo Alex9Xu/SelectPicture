@@ -27,7 +27,7 @@ public class PreviewPictureActivity extends AppCompatActivity implements Preview
     public static final String PIC_STR_LIST = "pic_str_list";
     public static final String CUR_PIC_POSITION = "current_picture_position";
     public static final String IS_SHOW_TOP_NUM = "is_show_top_num";
-    public static final String IS_SELECT_MODE = "is_select_mode";
+    public static final String IS_DISPLAY_MODE = "is_display_mode";
     public static final String PIC_SELECTED_STR_LIST = "pic_selected_list";
 
     private ViewPager mViewPager;
@@ -40,7 +40,7 @@ public class PreviewPictureActivity extends AppCompatActivity implements Preview
     private ArrayList<String> mSelectedPicStrList;
     private int mCurPostion;
     private boolean mFlagShowPicNum;
-    private boolean mIsSelectMode;
+    private boolean mIsDisplayMode;
 
 
     @Override
@@ -74,13 +74,13 @@ public class PreviewPictureActivity extends AppCompatActivity implements Preview
         mCurPostion = getIntent().getIntExtra(CUR_PIC_POSITION, 0);
         mViewPager.setCurrentItem(mCurPostion);
         mFlagShowPicNum = getIntent().getBooleanExtra(IS_SHOW_TOP_NUM, true);
-        mIsSelectMode = getIntent().getBooleanExtra(IS_SELECT_MODE, false);
-        if(mIsSelectMode) {
-            mLaySelect.setVisibility(View.VISIBLE);
-            mSelectedPicStrList = getIntent().getStringArrayListExtra(PIC_SELECTED_STR_LIST);
-        } else {
+        mIsDisplayMode = getIntent().getBooleanExtra(IS_DISPLAY_MODE, false);
+        if(mIsDisplayMode) {
             mLaySelect.setVisibility(View.GONE);
             mSelectedPicStrList = null;
+        } else {
+            mLaySelect.setVisibility(View.VISIBLE);
+            mSelectedPicStrList = getIntent().getStringArrayListExtra(PIC_SELECTED_STR_LIST);
         }
 
         // init other stuff
@@ -106,7 +106,7 @@ public class PreviewPictureActivity extends AppCompatActivity implements Preview
             mViewCount.setText(position + 1 + "/" + mAllPicStrList.size());
         }
 
-        if(mIsSelectMode && null != mSelectedPicStrList) {
+        if(!mIsDisplayMode && null != mSelectedPicStrList) {
             for(String str : mSelectedPicStrList) {
                 if(!StringUtils.isStringEmpty(str) && str.equals(mAllPicStrList.get(position))) {
                     mButtomSelect.setSelected(true);
